@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
+import {GetPostsArgs, IPost} from "../../models/models";
 
 export const jsonplaceholderApi = createApi({
     reducerPath: 'jsonplaceholder/api',
@@ -6,13 +7,14 @@ export const jsonplaceholderApi = createApi({
         baseUrl: 'https://jsonplaceholder.typicode.com/'
     }),
     endpoints: build => ({
-        searchPosts: build.query<any, number>({
-            query: (limit: number) => ({
+        searchPosts: build.query<IPost[], GetPostsArgs>({
+            query: (args = {}) => ({
                 url: 'posts',
                 params: {
-                    _limit: limit || 10
+                    _limit: args.limit || 10
                 }
-            })
+            }),
+            transformResponse: (response: IPost[]) => response
         })
     })
 })
