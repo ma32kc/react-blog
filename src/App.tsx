@@ -4,7 +4,7 @@ function App() {
     let [count, setCount] = useState(0)
   return (
     <div className="App">
-      <h1>{count}</h1>
+      <h1 className="bg-yellow-300 caret-black">{count}</h1>
         <button onClick={()=>{setCount(count++)}}>Клик</button>
     </div>
   );
