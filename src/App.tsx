@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
+import {Routes, Route} from 'react-router-dom'
+import {PostsPage} from "./pages/PostsPage";
+import {PostPage} from "./pages/PostPage";
+import {Navigation} from "./components/Navigation";
 
 function App() {
-    let [count, setCount] = useState(0)
-  return (
-    <div className="App">
-      <h1 className="bg-yellow-300 caret-black">{count}</h1>
-        <button onClick={()=>{setCount(count++)}}>Клик</button>
-    </div>
-  );
+    return (
+        <>
+            <Navigation/>
+            <Routes>
+                <Route path="/" element={<PostsPage/>}/>
+                <Route path="/post" element={<PostPage/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;
