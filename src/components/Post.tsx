@@ -1,4 +1,4 @@
-import {IPost} from "../models/models";
+import {IPost} from "../models/models"
 
 export function Post(post: IPost) {
     return (
