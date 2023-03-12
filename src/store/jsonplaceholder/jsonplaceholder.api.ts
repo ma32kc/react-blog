@@ -11,7 +11,8 @@ export const jsonplaceholderApi = createApi({
             query: (args = {}) => ({
                 url: 'posts',
                 params: {
-                    _limit: args.limit || 10
+                    _limit: args.limit || 10,
+                    title_like: args.title_like
                 }
             }),
             transformResponse: (response: IPost[]) => response

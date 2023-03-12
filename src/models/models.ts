@@ -7,4 +7,5 @@ export interface IPost {
 
 export interface GetPostsArgs {
     limit?: number;
+    title_like?: string;
 }
