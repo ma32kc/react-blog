@@ -19,7 +19,11 @@ export function PostsPage() {
     const handleCreatePost = (post: IPost) => {
         setPosts([...posts, post])
         toggle()
-    };
+    }
+
+    const handleDeletePost = (postId: number) => {
+        setPosts(posts.filter(post => post.id !== postId))
+    }
 
     useEffect(() => {
         if (data) {
@@ -51,15 +55,13 @@ export function PostsPage() {
                         {isLoading && <p className="text-center text-2xl">Загрузка...</p>}
                         {filteredPosts?.map(post =>
                             <li className="border-2 border-amber-300 border-solid p-3" key={post.id}>
-                                <Post userId={post.userId} body={post.body} id={post.id} title={post.title}/>
+                                <Post post={post} onDelete={handleDeletePost}/>
                             </li>
                         )}
                     </ul>
                     :
                     <p className="text-2xl text-center border-2 border-amber-300">Постов нет</p>
                 }
-                <p>{filteredPosts?.length}</p>
-
             </div>
         </div>
     )

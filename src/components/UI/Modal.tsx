@@ -11,7 +11,7 @@ export default function Modal(props: ModalProps) {
         <>
             {props.isOpen && (
                 <div
-                    className="absolute top-0 bottom-0 right-0 left-0 flex items-center justify-center bg-gray-500/80 transition-all ease-in-out duration-300"
+                    className="fixed top-0 bottom-0 right-0 left-0 flex items-center justify-center bg-gray-500/80 transition-all ease-in-out duration-300"
                     onClick={props.toggle}
                 >
                     <div

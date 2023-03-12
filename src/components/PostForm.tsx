@@ -38,7 +38,7 @@ const PostForm = ({ onSubmit }: IPostFormProps) => {
                     className="border-2 border-solid border-amber-300 mb-4 px-2"
                 />
             </label>
-            <MyButton label="Create Post" onClick={() => handleSubmit}/>
+            <MyButton label="Создать пост" onClick={() => handleSubmit}/>
         </form>
     );
 };
