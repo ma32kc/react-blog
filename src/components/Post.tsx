@@ -1,5 +1,6 @@
 import {IPost} from "../models/models"
-import MyButton from "./UI/MyButton";
+import MyButton from "./UI/MyButton"
+import {useNavigate} from "react-router-dom"
 
 interface IPostProps {
     post: IPost;
@@ -7,6 +8,13 @@ interface IPostProps {
 }
 
 export function Post({post, onDelete}: IPostProps) {
+
+    const navigate = useNavigate()
+
+    const handleOpen = () => {
+
+        console.log(navigate(`/post/${post.id}`))
+    };
 
     const handleDelete = () => {
         onDelete(post.id);
@@ -19,7 +27,10 @@ export function Post({post, onDelete}: IPostProps) {
                 <h2 className="font-bold text-lg">{post.title}</h2>
                 <p className="capitalize">{post.body}</p>
             </div>
-            <MyButton onClick={handleDelete} label="Удалить"/>
+            <div>
+                <MyButton onClick={handleOpen} label="Открыть"/>
+                <MyButton onClick={handleDelete} label="Удалить"/>
+            </div>
         </div>
     )
 }

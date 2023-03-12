@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import {GetPostsArgs, IPost} from "../../models/models";
+import {GetPostArgs, GetPostsArgs, IPost} from "../../models/models";
 
 export const jsonplaceholderApi = createApi({
     reducerPath: 'jsonplaceholder/api',
@@ -16,8 +16,17 @@ export const jsonplaceholderApi = createApi({
                 }
             }),
             transformResponse: (response: IPost[]) => response
+        }),
+        searchPostById: build.query<IPost[], GetPostArgs>({
+            query: (args) => ({
+                url: 'posts/',
+                params: {
+                    id: args.id
+                }
+            }),
+            transformResponse: (response: IPost[]) => response
         })
     })
 })
 
-export const {useSearchPostsQuery} = jsonplaceholderApi
+export const {useSearchPostsQuery, useSearchPostByIdQuery} = jsonplaceholderApi
