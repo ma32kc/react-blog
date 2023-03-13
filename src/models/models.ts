@@ -12,6 +12,7 @@ export interface GetPostsArgs {
 
 export interface GetPostArgs {
     id: number
+    limit?: number
 }
 
 export interface IComment {

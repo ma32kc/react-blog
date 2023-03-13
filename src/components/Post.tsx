@@ -26,7 +26,7 @@ export function Post({post, onDelete}: IPostProps) {
         <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
             <div>
                 <p className="font-bold text-lg">Автор: Блогер {post.userId}</p>
-                <h2 className="font-bold text-lg">{post.title}</h2>
+                <p className="font-bold text-lg">{post.title}</p>
                 <p className="capitalize">{post.body}</p>
             </div>
             <div className="flex gap-4">

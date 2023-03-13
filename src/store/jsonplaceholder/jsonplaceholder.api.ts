@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import {GetPostArgs, GetPostsArgs, IPost} from "../../models/models";
+import {GetPostArgs, GetPostsArgs, IComment, IPost} from "../../models/models";
 
 export const jsonplaceholderApi = createApi({
     reducerPath: 'jsonplaceholder/api',
@@ -21,6 +21,14 @@ export const jsonplaceholderApi = createApi({
                 url: 'posts/' + args.id
             })
         }),
+        searchPostComments: build.query<IComment[], GetPostArgs>({
+            query: (args) => ({
+                url: `posts/${args.id}/comments`,
+                params: {
+                    _limit: args.limit
+                }
+            })
+        }),
         createPost: build.mutation<IPost, Partial<IPost>>({
             query: (post) => ({
                 url: 'posts/',
@@ -37,4 +45,4 @@ export const jsonplaceholderApi = createApi({
     })
 })
 
-export const {useSearchPostsQuery, useSearchPostByIdQuery, useCreatePostMutation, useDeletePostMutation} = jsonplaceholderApi
+export const {useSearchPostsQuery, useSearchPostByIdQuery, useSearchPostCommentsQuery, useCreatePostMutation, useDeletePostMutation} = jsonplaceholderApi
