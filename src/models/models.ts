@@ -13,3 +13,11 @@ export interface GetPostsArgs {
 export interface GetPostArgs {
     id: number
 }
+
+export interface IComment {
+    postId: number;
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+}

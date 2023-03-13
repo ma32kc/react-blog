@@ -14,19 +14,27 @@ export const jsonplaceholderApi = createApi({
                     _limit: args.limit || 10,
                     title_like: args.title_like
                 }
-            }),
-            transformResponse: (response: IPost[]) => response
+            })
         }),
-        searchPostById: build.query<IPost[], GetPostArgs>({
+        searchPostById: build.query<IPost, GetPostArgs>({
             query: (args) => ({
+                url: 'posts/' + args.id
+            })
+        }),
+        createPost: build.mutation<IPost, Partial<IPost>>({
+            query: (post) => ({
                 url: 'posts/',
-                params: {
-                    id: args.id
-                }
-            }),
-            transformResponse: (response: IPost[]) => response
-        })
+                method: 'POST',
+                body: post
+            })
+        }),
+        deletePost: build.mutation<IPost, GetPostArgs>({
+            query: (args) => ({
+                url: 'posts/' + args.id,
+                method: 'DELETE'
+            })
+        }),
     })
 })
 
-export const {useSearchPostsQuery, useSearchPostByIdQuery} = jsonplaceholderApi
+export const {useSearchPostsQuery, useSearchPostByIdQuery, useCreatePostMutation, useDeletePostMutation} = jsonplaceholderApi

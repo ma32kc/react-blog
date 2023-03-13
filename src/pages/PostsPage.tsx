@@ -46,7 +46,7 @@ export function PostsPage() {
                         value={searchQuery}
                         onChange={e => setSearchQuery(e.target.value)}/>
                 </form>
-                <MyButton label="Добавить пост" onClick={toggle}/>
+                <MyButton label="Добавить пост" onClick={toggle} classes="w-[200px]"/>
                 <Modal isOpen={isOpen} toggle={toggle}>
                     <PostForm onSubmit={handleCreatePost}/>
                 </Modal>

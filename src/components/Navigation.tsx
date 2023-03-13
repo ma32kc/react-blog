@@ -6,7 +6,6 @@ export function Navigation() {
             <span className="text-xl font-bold">Блог</span>
             <span className="flex gap-9">
                 <Link to="/">Главная</Link>
-                <Link to="/post">Пост</Link>
             </span>
         </nav>
     )

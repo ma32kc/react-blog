@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {IPost} from "../models/models"
 import MyButton from "./UI/MyButton";
-
+import {useCreatePostMutation} from "../store/jsonplaceholder/jsonplaceholder.api";
 interface IPostFormProps {
     onSubmit: (post: IPost) => void
 }
@@ -9,11 +9,13 @@ interface IPostFormProps {
 const PostForm = ({ onSubmit }: IPostFormProps) => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
+    const [createPost] = useCreatePostMutation()
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newPost: IPost = { userId: 1, id: Date.now(), title, body }
         onSubmit(newPost)
+        createPost(newPost)
         setTitle('')
         setBody('')
     };
@@ -38,7 +40,7 @@ const PostForm = ({ onSubmit }: IPostFormProps) => {
                     className="border-2 border-solid border-amber-300 mb-4 px-2"
                 />
             </label>
-            <MyButton label="Создать пост" onClick={() => handleSubmit}/>
+            <MyButton label="Создать пост" onClick={() => handleSubmit} classes="w-[200px]"/>
         </form>
     );
 };
