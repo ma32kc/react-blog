@@ -42,7 +42,21 @@ export const jsonplaceholderApi = createApi({
                 method: 'DELETE'
             })
         }),
+        updatePost: build.mutation<IPost,  Partial<IPost>>({
+            query: (post) => ({
+                url: 'posts/' + post.id,
+                method: 'PUT',
+                body: post
+            })
+        }),
     })
 })
 
-export const {useSearchPostsQuery, useSearchPostByIdQuery, useSearchPostCommentsQuery, useCreatePostMutation, useDeletePostMutation} = jsonplaceholderApi
+export const {
+    useSearchPostsQuery,
+    useSearchPostByIdQuery,
+    useSearchPostCommentsQuery,
+    useCreatePostMutation,
+    useDeletePostMutation,
+    useUpdatePostMutation
+} = jsonplaceholderApi

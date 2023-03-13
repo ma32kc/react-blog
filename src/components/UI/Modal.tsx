@@ -15,7 +15,7 @@ export default function Modal(props: ModalProps) {
                     onClick={props.toggle}
                 >
                     <div
-                        className="w-1/2 h-1/3 bg-white rounded"
+                        className="px-40 py-10 bg-white rounded"
                         onClick={e => e.stopPropagation()}
                     >
                         {props.children}

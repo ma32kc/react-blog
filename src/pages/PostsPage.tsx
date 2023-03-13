@@ -48,7 +48,7 @@ export function PostsPage() {
                 </form>
                 <MyButton label="Добавить пост" onClick={toggle} classes="w-[200px]"/>
                 <Modal isOpen={isOpen} toggle={toggle}>
-                    <PostForm onSubmit={handleCreatePost}/>
+                    <PostForm onSubmit={handleCreatePost} isCreate={true}/>
                 </Modal>
                 {filteredPosts?.length ?
                     <ul className="flex flex-col gap-3">
